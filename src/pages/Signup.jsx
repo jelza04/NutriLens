@@ -10,8 +10,8 @@ const Signup = () => {
 
     const handleSignup = (e) => {
         e.preventDefault();
-        // Mock signup - redirect to home
-        navigate('/');
+        // Mock signup - redirect to welcome screen
+        navigate('/welcome');
     };
 
     return (
