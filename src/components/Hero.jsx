@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ChevronRight, Play } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import heroImage from '../assets/hero-image.jpg';
 
 const Hero = () => {
@@ -53,14 +54,16 @@ const Hero = () => {
                     </p>
 
                     <div className="flex flex-col sm:flex-row items-center gap-5">
-                        <motion.button
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            className="bg-white text-gray-900 text-lg font-bold px-8 py-4 rounded-xl hover:bg-gray-100 transition-all duration-300 flex items-center shadow-[0_0_20px_rgba(255,255,255,0.3)]"
-                        >
-                            Get Started
-                            <ChevronRight className="ml-2 w-5 h-5" />
-                        </motion.button>
+                        <Link to="/signup">
+                            <motion.button
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                className="bg-white text-gray-900 text-lg font-bold px-8 py-4 rounded-xl hover:bg-gray-100 transition-all duration-300 flex items-center shadow-[0_0_20px_rgba(255,255,255,0.3)]"
+                            >
+                                Get Started
+                                <ChevronRight className="ml-2 w-5 h-5" />
+                            </motion.button>
+                        </Link>
 
 
                     </div>

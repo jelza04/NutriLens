@@ -21,9 +21,9 @@ const Navbar = () => {
     }, []);
 
     const navLinks = [
-        { name: "Home", href: "#home" },
+        { name: "Home", href: "/", isRoute: true },
         { name: "Features", href: "#features" },
-        { name: "About", href: "#about" },
+        { name: "About", href: "/about", isRoute: true },
     ];
 
     return (
@@ -46,18 +46,33 @@ const Navbar = () => {
                     {/* Desktop Menu */}
                     <div className="hidden md:flex items-center space-x-10">
                         {navLinks.map((link) => (
-                            <a
-                                key={link.name}
-                                href={link.href}
-                                className="relative text-sm font-medium text-gray-300 overflow-hidden group"
-                            >
-                                <span className="block transition-transform duration-300 group-hover:-translate-y-full">
-                                    {link.name}
-                                </span>
-                                <span className="absolute inset-0 block translate-y-full transition-transform duration-300 group-hover:translate-y-0 text-white">
-                                    {link.name}
-                                </span>
-                            </a>
+                            link.isRoute ? (
+                                <Link
+                                    key={link.name}
+                                    to={link.href}
+                                    className="relative text-sm font-medium text-gray-300 overflow-hidden group"
+                                >
+                                    <span className="block transition-transform duration-300 group-hover:-translate-y-full">
+                                        {link.name}
+                                    </span>
+                                    <span className="absolute inset-0 block translate-y-full transition-transform duration-300 group-hover:translate-y-0 text-white">
+                                        {link.name}
+                                    </span>
+                                </Link>
+                            ) : (
+                                <a
+                                    key={link.name}
+                                    href={link.href}
+                                    className="relative text-sm font-medium text-gray-300 overflow-hidden group"
+                                >
+                                    <span className="block transition-transform duration-300 group-hover:-translate-y-full">
+                                        {link.name}
+                                    </span>
+                                    <span className="absolute inset-0 block translate-y-full transition-transform duration-300 group-hover:translate-y-0 text-white">
+                                        {link.name}
+                                    </span>
+                                </a>
+                            )
                         ))}
                     </div>
 
@@ -120,9 +135,9 @@ const Navbar = () => {
             {isOpen && (
                 <div className="md:hidden bg-black/95 backdrop-blur-xl border-b border-white/10 absolute top-full left-0 w-full shadow-2xl">
                     <div className="px-6 pt-4 pb-8 space-y-4">
-                        <a href="#home" className="block px-4 py-3 text-lg font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-xl transition-colors">Home</a>
+                        <Link to="/" onClick={() => setIsOpen(false)} className="block px-4 py-3 text-lg font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-xl transition-colors">Home</Link>
                         <a href="#features" className="block px-4 py-3 text-lg font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-xl transition-colors">Features</a>
-                        <a href="#about" className="block px-4 py-3 text-lg font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-xl transition-colors">About</a>
+                        <Link to="/about" onClick={() => setIsOpen(false)} className="block px-4 py-3 text-lg font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-xl transition-colors">About</Link>
                         <div className="border-t border-white/10 my-2 pt-6 space-y-4">
                             <Link to="/login" className="block w-full text-center px-4 py-3 text-lg font-medium text-gray-300 hover:text-white rounded-xl transition-colors">
                                 Login

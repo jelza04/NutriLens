@@ -10,8 +10,8 @@ const Login = () => {
 
     const handleLogin = (e) => {
         e.preventDefault();
-        // Mock login - redirect to home
-        navigate('/');
+        // Mock login - redirect to welcome screen
+        navigate('/welcome');
     };
 
     return (
